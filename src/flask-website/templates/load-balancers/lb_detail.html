@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+    <h2>Configuration Load Balancer : {{ server.name }}</h2>
+    <a href="/lb/list" class="btn btn-secondary">Retour à la liste</a>
+</div>
+
+<div style="background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 5px; font-family: monospace;">
+<pre>
+upstream {{ server.name }} {
+    {% if server.algorithm %}{{ server.algorithm }}{% endif %}
+    
+    {% for backend in server.backend_servers.split(',') %}
+    server {{ backend.strip() }};
+    {% endfor %}
+}
+
+server {
+    listen 80;
+    
+    location / {
+        proxy_pass http://{{ server.name }};
+    }
+}
+</pre>
+</div>
+{% endblock %}

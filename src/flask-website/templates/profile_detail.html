@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card shadow-sm mt-4 w-50">
+    <div class="card-header bg-dark text-white">
+        <h3 class="card-title mb-0">Détail du Profil Utilisateur</h3>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-primary">Utilisateur : {{ user.username }}</h5>
+        <hr>
+        <p class="card-text">
+            <strong>Statut de la requête :</strong> {{ user.status }}<br>
+            {% if user.role %}
+            <strong>Rôle :</strong> {{ user.role }}
+            {% else %}
+            <strong>Rôle :</strong> Utilisateur standard
+            {% endif %}
+        </p>
+        <a href="/list_profile" class="btn btn-secondary mt-3">Retour à la liste des profils</a>
+    </div>
+</div>
+{% endblock %}

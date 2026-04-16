@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Ajouter un Load Balancer</h2>
+<div class="card p-4 shadow-sm">
+    <form action="/lb/create" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Nom du cluster (upstream)</label>
+            <input type="text" class="form-control" name="name" placeholder="ex: backend_cluster" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Algorithme</label>
+            <select class="form-select" name="algorithm">
+                <option value="">Round Robin (Défaut)</option>
+                <option value="least_conn;">Moins de connexions (least_conn)</option>
+                <option value="ip_hash;">IP Hash</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Serveurs backend (IP:Port séparés par des virgules)</label>
+            <input type="text" class="form-control" name="backend_servers" placeholder="192.168.1.10:80, 192.168.1.11:80" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <a href="/lb/list" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}

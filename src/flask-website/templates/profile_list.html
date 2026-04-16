@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="mb-4">
+    <h2>Liste des Profils</h2>
+    <p class="text-muted">Gestion des utilisateurs du Générateur Web.</p>
+</div>
+
+<ul class="list-group w-50">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <strong>admin</strong> (Administrateur)
+        <a href="/profile/admin" class="btn btn-sm btn-outline-primary">Voir le profil</a>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <strong>edouard.postel</strong> (Enseignant)
+        <a href="/profile/edouard.postel" class="btn btn-sm btn-outline-primary">Voir le profil</a>
+    </li>
+</ul>
+{% endblock %}

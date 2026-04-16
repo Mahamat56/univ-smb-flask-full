@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Ajouter un Reverse Proxy</h2>
+<div class="card p-4 shadow-sm">
+    <form action="/rp/create" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Nom de la configuration</label>
+            <input type="text" class="form-control" name="name" placeholder="ex: Proxy-App1" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nom de domaine public</label>
+            <input type="text" class="form-control" name="domain" placeholder="app.mon-site.com" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">IP cible (Backend)</label>
+            <input type="text" class="form-control" name="target_ip" placeholder="127.0.0.1" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Port cible (Backend)</label>
+            <input type="number" class="form-control" name="target_port" value="8080" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <a href="/rp/list" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}

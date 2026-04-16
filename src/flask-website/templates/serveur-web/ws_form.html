@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Ajouter un nouveau Serveur Web</h2>
+<div class="card p-4 shadow-sm">
+    <form action="/ws/create" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Nom du serveur (ex: Web-Prod-01)</label>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Adresse IP</label>
+            <input type="text" class="form-control" name="ip" placeholder="192.168.1.10" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Port</label>
+            <input type="number" class="form-control" name="port" value="80" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nom de domaine (server_name)</label>
+            <input type="text" class="form-control" name="server_name" placeholder="www.mon-site.com" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <a href="/ws/list" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}

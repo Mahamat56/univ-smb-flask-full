@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+    <h2>Configuration Reverse Proxy : {{ server.name }}</h2>
+    <a href="/rp/list" class="btn btn-secondary">Retour à la liste</a>
+</div>
+
+<div style="background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 5px; font-family: monospace;">
+<pre>
+server {
+    listen 80;
+    server_name {{ server.domain }};
+
+    location / {
+        proxy_pass http://{{ server.target_ip }}:{{ server.target_port }};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+</pre>
+</div>
+{% endblock %}
