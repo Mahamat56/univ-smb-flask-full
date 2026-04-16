@@ -33,9 +33,14 @@ def hello():
     return "Hello, API!"
 
 
+# Dans api.py
 @app.route('/login', methods=['GET'])
-def login():
-    return jsonify({"status": "success", "message": "Veuillez fournir vos identifiants."})
+def api_login():
+    # On utilise request.args pour un GET
+    username = request.args.get('username')
+    password = request.args.get('password')
+    # ... vérification ...
+    return jsonify({"status": "success"})
 
 @app.route('/identity', methods=['GET'])
 def get_identity():

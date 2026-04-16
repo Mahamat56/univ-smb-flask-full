@@ -15,10 +15,19 @@ API_URL = "http://localhost:5001"
 def start(): 
     return render_template('start.html')
 
-@app.route('/login')
+# Modifiez cette ligne dans votre fichier website.py
+@app.route('/login', methods=['GET', 'POST']) 
 def login():
-    response = requests.get(f"{API_URL}/login")
-    return render_template('login.html', message=response.json().get('message'))
+    if request.method == 'POST':
+        # Logique pour traiter le formulaire (appel à l'API)
+        username = request.form.get('username')
+        password = request.form.get('password')
+        # ... votre code d'appel API ...
+        return redirect(url_for('start'))
+    
+    # Si c'est un GET, on affiche simplement le formulaire
+    return render_template('login.html')
+
 
 @app.route('/list_profile')
 def list_profile():
