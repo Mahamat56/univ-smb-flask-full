@@ -5,22 +5,22 @@
     <div class="col-md-4">
         <div class="card shadow">
             <div class="card-body">
-                <h2 class="card-title text-center mb-4">Connexion</h2>
+                <h3 class="text-center mb-4">Connexion</h3>
                 
-                {% if message %}
-                    <div class="alert alert-info">{{ message }}</div>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
                 {% endif %}
 
-                <form action="/login" method="GET">
+                <form action="/login" method="POST">
                     <div class="mb-3">
-                        <label class="form-label">Identifiant</label>
-                        <input type="text" class="form-control" name="username" placeholder="ex: admin" required>
+                        <label class="form-label">Nom d'utilisateur</label>
+                        <input type="text" name="username" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" name="password">
+                        <input type="password" name="password" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-dark w-100">Se connecter</button>
+                    <button type="submit" class="btn btn-primary w-100">Se connecter</button>
                 </form>
             </div>
         </div>

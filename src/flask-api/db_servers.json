@@ -1,5 +1,28 @@
 {
-    "ws": [],
-    "rp": [],
-    "lb": []
+    "ws": [
+        {
+            "name": "FTP",
+            "ip": "192.168.10.10",
+            "port": "80",
+            "server_name": null,
+            "id": "29494936-9e89-4d60-871d-0f99282fcec8"
+        }
+    ],
+    "rp": [
+        {
+            "name": "Proxy-App1",
+            "target_ip": "127.0.0.1",
+            "target_port": "8080",
+            "domain": "app.mahamat.local",
+            "id": "6ccf20b8-7134-4511-a32b-dfc8457fce5c"
+        }
+    ],
+    "lb": [
+        {
+            "name": "backend_cluster",
+            "algorithm": "least_conn;",
+            "backend_servers": "192.168.10.10:80,192.168.10.11:80",
+            "id": "b3d5dcc7-ab7b-40b6-b3af-b48b6706687f"
+        }
+    ]
 }
